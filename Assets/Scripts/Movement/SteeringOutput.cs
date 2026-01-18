@@ -3,7 +3,7 @@ using UnityEngine;
 public class SteeringOutput
 {
     private Vector3 linear;
-    private float angular;
+    private Vector3 angular;
 
     public Vector3 Linear
     {
@@ -11,7 +11,7 @@ public class SteeringOutput
         set { linear = value; }
     }
 
-    public float Angular
+    public Vector3 Angular
     {
         get { return angular; }
         set { angular = value; }
@@ -20,10 +20,10 @@ public class SteeringOutput
     public SteeringOutput()
     {
         linear = Vector3.zero;
-        angular = 0f;
+        angular = Vector3.zero;
     }
 
-    public SteeringOutput(Vector3 linear, float angular)
+    public SteeringOutput(Vector3 linear, Vector3 angular)
     {
         this.linear = linear;
         this.angular = angular;
