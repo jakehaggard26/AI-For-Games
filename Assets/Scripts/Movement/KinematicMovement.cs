@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class KinematicMovement
 {
+    #region Kinematic Movement Algorithms
     public static SteeringOutput runKinematicSeek(GameObject agent, GameObject target)
     {
         SteeringOutput output = new SteeringOutput();
@@ -14,15 +15,34 @@ public class KinematicMovement
         output.Linear *= agent.GetComponent<AgentController>().speed; 
 
         // Update orientation
-        //output.Angular = updateOrientation(agent, output);
-        //faceVelocityDirection(agent, output);
-        output.Angular = generateAngularVelocity(agent, output.Linear, agent.GetComponent<Rigidbody>(), agent.GetComponent<AgentController>().rotationSpeed);
+        output.Angular = generateAngularVelocity(agent, agent.transform.position + output.Linear, agent.GetComponent<Rigidbody>(), agent.GetComponent<AgentController>().rotationSpeed);
 
         // Draw line in desired direction for debugging
-        Debug.DrawLine(agent.transform.position, output.Linear * agent.GetComponent<AgentController>().speed, Color.red);
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
 
         return output;
     }
+
+    public static SteeringOutput runKinematicFlee(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Get a direction away from the target
+        output.Linear = agent.transform.position - target.transform.position;
+
+        // Normalize and scale wrt speed
+        output.Linear.Normalize();
+        output.Linear *= agent.GetComponent<AgentController>().speed; 
+
+        // Update orientation
+        output.Angular = generateAngularVelocity(agent, agent.transform.position + output.Linear, agent.GetComponent<Rigidbody>(), agent.GetComponent<AgentController>().rotationSpeed);
+
+        // Draw line in desired direction for debugging
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+
+        return output;
+    }
+    #endregion
 
     public static float newOrientation(float current, Vector3 velocity)
     {

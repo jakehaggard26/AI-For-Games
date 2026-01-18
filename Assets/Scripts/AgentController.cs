@@ -11,6 +11,10 @@ public class AgentController : MonoBehaviour
     public SteeringOutput steering;
     public Rigidbody rb;
 
+    public bool isSeek = true;
+    public bool isFlee = false;
+    public bool isArrival = false;
+    public bool isWander = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,8 +30,32 @@ public class AgentController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Store outputs
-        steering = KinematicMovement.runKinematicSeek(this.gameObject, target);
+        steering = new SteeringOutput();
+        
+        // Store outputs based on selected algorithm
+        if(isSeek)
+        {
+            steering = KinematicMovement.runKinematicSeek(this.gameObject, target);
+        }
+        else if(isFlee)
+        {
+            steering = KinematicMovement.runKinematicFlee(this.gameObject, target);
+        }
+        else if(isArrival)
+        {
+            return;
+        }
+        else if(isWander)
+        {
+            return;
+        }
+        else
+        {
+            Debug.Log("No movement algorithm selected.");
+            steering.Linear = Vector3.zero;
+            steering.Angular = Vector3.zero;
+        }
+        
 
         // Update Linear Velocity
         rb.linearVelocity = steering.Linear * Time.fixedDeltaTime;
