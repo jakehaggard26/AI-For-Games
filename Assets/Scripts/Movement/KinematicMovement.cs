@@ -85,7 +85,7 @@ public class KinematicMovement
         output.Linear = agent.transform.forward * agent.GetComponent<AgentController>().speed * agent.GetComponent<AgentController>().wanderSpeedBuff;
 
         // Randomly change orientation
-        output.Angular = Vector3.up * generateRandomBinomial() * agent.GetComponent<AgentController>().maxRotation * agent.GetComponent<AgentController>().rotationSpeed;
+        output.Angular = Vector3.up * generateRandomBinomial() * agent.GetComponent<AgentController>().maxRotation * agent.GetComponent<AgentController>().rotationSpeed * Time.fixedDeltaTime;
         Debug.Log("Wander Angular: " + output.Angular);
 
         Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
