@@ -5,9 +5,12 @@ public class AgentController : MonoBehaviour
     public float speed = 5f;
     public float maxSpeed = 7.5f;
     public float rotationSpeed = 200f;
+    public float maxRotation = 60f;
 
     public float radiusOfSatisfaction = 2f;
     public float timeToTarget = 0.25f;
+
+    public float wanderSpeedBuff = 10f;
 
     private float orientation;
 
@@ -51,7 +54,7 @@ public class AgentController : MonoBehaviour
         }
         else if(isWander)
         {
-            return;
+            steering = KinematicMovement.runKinematicWander(this.gameObject);
         }
         else
         {

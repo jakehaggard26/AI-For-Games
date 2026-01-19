@@ -76,6 +76,22 @@ public class KinematicMovement
 
         return output;
     }
+
+    public static SteeringOutput runKinematicWander(GameObject agent)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Move forward at a constant speed
+        output.Linear = agent.transform.forward * agent.GetComponent<AgentController>().speed * agent.GetComponent<AgentController>().wanderSpeedBuff;
+
+        // Randomly change orientation
+        output.Angular = Vector3.up * generateRandomBinomial() * agent.GetComponent<AgentController>().maxRotation;
+        Debug.Log("Wander Angular: " + output.Angular);
+
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+
+        return output;
+    }
     #endregion
 
     public static float newOrientation(float current, Vector3 velocity)
@@ -104,5 +120,14 @@ public class KinematicMovement
         
         // Apply angular velocity
         return rotationAxis * rotationMagnitude * rotationSpeed;
+    }
+
+    /// <summary>
+    /// Generates a random binomial value between -1 and 1.
+    /// </summary>
+    /// <returns>A random binomial value between -1 and 1 stored in a float.</returns>
+    public static float generateRandomBinomial()
+    {
+        return Random.Range(0f, 1f) - Random.Range(0f, 1f);
     }
 }
