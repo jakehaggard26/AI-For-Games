@@ -503,8 +503,10 @@ MonoBehaviour:
   speed: 5
   maxSpeed: 7.5
   rotationSpeed: 120
+  maxRotation: 60
   radiusOfSatisfaction: 2
   timeToTarget: 0.25
+  wanderSpeedBuff: 10
   target: {fileID: 2041973927}
   rb: {fileID: 418901726}
   isSeek: 0
@@ -1676,8 +1678,10 @@ MonoBehaviour:
   speed: 5
   maxSpeed: 7.5
   rotationSpeed: 120
+  maxRotation: 60
   radiusOfSatisfaction: 2
   timeToTarget: 0.25
+  wanderSpeedBuff: 10
   target: {fileID: 1528676656}
   rb: {fileID: 1646413682}
   isSeek: 1
@@ -1827,11 +1831,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80646b4c51eb17c4baa565e7a7e1d9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AgentController
-  speed: 5
-  maxSpeed: 7.5
-  rotationSpeed: 120
+  speed: 10
+  maxSpeed: 15
+  rotationSpeed: 15
+  maxRotation: 30
   radiusOfSatisfaction: 2
   timeToTarget: 0.25
+  wanderSpeedBuff: 10
   target: {fileID: 1677349241}
   rb: {fileID: 1793286369}
   isSeek: 0
@@ -2279,8 +2285,10 @@ MonoBehaviour:
   speed: 5
   maxSpeed: 7.5
   rotationSpeed: 120
+  maxRotation: 60
   radiusOfSatisfaction: 2
   timeToTarget: 0.25
+  wanderSpeedBuff: 10
   target: {fileID: 735954553}
   rb: {fileID: 2022267564}
   isSeek: 0
