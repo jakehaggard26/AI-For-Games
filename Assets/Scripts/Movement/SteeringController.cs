@@ -36,10 +36,12 @@ public class SteeringController : MonoBehaviour
         }
         else if(isArrival)
         {
-            return;
+            steering = SteeringBehaviors.runSteeringArrival(agent.gameObject, agent.target);
         }
         else if(isWander)
         {
+            steering.Linear = Vector3.zero;
+            steering.Angular = Vector3.zero;
             return;
         }
         else

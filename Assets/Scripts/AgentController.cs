@@ -9,6 +9,7 @@ public class AgentController : MonoBehaviour
     public float maxRotation = 60f;
 
     public float radiusOfSatisfaction = 2f;
+    public float slowRadius = 5f;
     public float timeToTarget = 0.25f;
 
     public float wanderSpeedBuff = 10f;

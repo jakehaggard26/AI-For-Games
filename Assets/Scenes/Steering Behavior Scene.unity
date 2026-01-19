@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 1646413677}
   - component: {fileID: 1646413682}
   - component: {fileID: 1646413681}
+  - component: {fileID: 1646413683}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -850,17 +851,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AgentController
   speed: 5
   maxSpeed: 7.5
+  maxAcceleration: 5
   rotationSpeed: 200
   maxRotation: 60
   radiusOfSatisfaction: 2
+  slowRadius: 10
   timeToTarget: 0.25
   wanderSpeedBuff: 10
   target: {fileID: 803169217}
   rb: {fileID: 0}
-  isSeek: 0
-  isFlee: 0
-  isArrival: 0
-  isWander: 1
 --- !u!54 &1646413682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -888,6 +887,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1646413683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646413676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166534ad82ea01c4991a4a975d01466c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SteeringController
+  agent: {fileID: 0}
+  isSeek: 0
+  isFlee: 0
+  isArrival: 1
+  isWander: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
