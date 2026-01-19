@@ -11,7 +11,7 @@ public class AgentController : MonoBehaviour
 
     public float radiusOfSatisfaction = 2f;
     public float slowRadius = 5f;
-    [Tooltip("Time in seconds to achieve target speed. Higher values result in slower acceleration. Lower values result in faster acceleration.")]
+    [Tooltip("Time in seconds to achieve target speed. Higher values result in a more gentle decceleration. Lower values result in a more abrupt decceleration.")]
     public float timeToTarget = 0.25f;
 
     public float wanderSpeedBuff = 10f;

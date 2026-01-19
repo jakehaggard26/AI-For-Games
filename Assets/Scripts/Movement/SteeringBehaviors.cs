@@ -155,4 +155,33 @@ public class SteeringBehaviors
 
         return output;
     }
+
+    public static SteeringOutput runSteeringVelocityMatching(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+
+        Debug.Log("Agent Velocity: " + agent.GetComponent<Rigidbody>().linearVelocity + "\nTarget Velocity: " + target.GetComponent<Rigidbody>().linearVelocity);
+        
+        // Gets target velocity
+        output.Linear = target.GetComponent<Rigidbody>().linearVelocity - agent.GetComponent<Rigidbody>().linearVelocity;
+        Debug.Log("Target Velocity - Agent Velocity: " + output.Linear);
+        output.Linear /= agent.GetComponent<AgentController>().timeToTarget;
+        Debug.Log("Scaled Target Velocity: " + output.Linear);
+
+        Debug.Log("Agent acceleration: " + output.Linear.magnitude + " | Max Acceleration: " + agent.GetComponent<AgentController>().maxAcceleration);
+
+        // Limit acceleration if going too fast
+        if(output.Linear.magnitude > agent.GetComponent<AgentController>().maxAcceleration)
+        {
+            Debug.Log("Going to fast");
+            output.Linear.Normalize();
+            output.Linear *= agent.GetComponent<AgentController>().maxAcceleration;
+            Debug.Log("Updated Velocity: " + output.Linear);
+        }
+
+        Debug.DrawLine(agent.transform.position, output.Linear, Color.red);
+
+        return output;
+    }
 }

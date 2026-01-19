@@ -388,6 +388,61 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
   m_PrefabInstance: {fileID: 908607181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &803169222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803169217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8f0dcaa2f632840a96a6f48cd03724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrawForwardRay
+--- !u!114 &803169223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803169217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e99c42529400d42912bc7d53fb520b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetVelocity
+  linearVelocity: {x: 0, y: 0, z: 5}
+  angularVelocity: {x: 0, y: 0, z: 0}
+  useRandomLinearVelocity: 1
+  useRandomAngularVelocity: 0
+--- !u!54 &803169224
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803169217}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.87921
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -572,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.466606
+      value: 2.09
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -605,7 +660,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803169222}
+    - targetCorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803169223}
+    - targetCorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803169224}
   m_SourcePrefab: {fileID: 100100000, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
 --- !u!1 &1373959758
 GameObject:
@@ -829,14 +893,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646413676}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35356, y: 0.99999994, z: 0.357}
+  m_LocalRotation: {x: 0, y: -0.82898873, z: 0, w: 0.5592654}
+  m_LocalPosition: {x: 0.35356, y: 0.99999994, z: -4.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1373959759}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -111.99, z: 0}
 --- !u!114 &1646413681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,12 +915,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AgentController
   speed: 5
   maxSpeed: 7.5
-  maxAcceleration: 5
+  maxAcceleration: 15
+  maxAngularAcceleration: 15
   rotationSpeed: 200
   maxRotation: 60
-  radiusOfSatisfaction: 2
+  radiusOfSatisfaction: 3
   slowRadius: 10
-  timeToTarget: 0.25
+  timeToTarget: 0.2
   wanderSpeedBuff: 10
   target: {fileID: 803169217}
   rb: {fileID: 0}
@@ -902,8 +967,10 @@ MonoBehaviour:
   agent: {fileID: 0}
   isSeek: 0
   isFlee: 0
-  isArrival: 1
+  isArrival: 0
   isWander: 0
+  isAlign: 0
+  isVelocityMatching: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
