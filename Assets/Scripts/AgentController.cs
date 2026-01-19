@@ -4,6 +4,7 @@ public class AgentController : MonoBehaviour
 {
     public float speed = 5f;
     public float maxSpeed = 7.5f;
+    public float maxAcceleration = 15f;
     public float rotationSpeed = 200f;
     public float maxRotation = 60f;
 
