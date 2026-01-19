@@ -1,4 +1,5 @@
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SteeringBehaviors
@@ -19,12 +20,44 @@ public class SteeringBehaviors
 
         return output;
     }
+    public static SteeringOutput runSteeringSeek(GameObject agent, Vector3 target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Get the direction to the target
+        output.Linear = target - agent.transform.position;
+
+        // Normalize and scale wrt max acceleration
+        output.Linear.Normalize();
+        output.Linear *= agent.GetComponent<AgentController>().maxAcceleration;
+
+        // Draw line in desired direction for debugging
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+
+        return output;
+    }
     public static SteeringOutput runSteeringFlee(GameObject agent, GameObject target)
     {
         SteeringOutput output = new SteeringOutput();
 
         // Get the direction to the target
         output.Linear = agent.transform.position - target.transform.position;
+
+        // Normalize and scale wrt max acceleration
+        output.Linear.Normalize();
+        output.Linear *= agent.GetComponent<AgentController>().maxAcceleration;
+
+        // Draw line in desired direction for debugging
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+
+        return output;
+    }
+    public static SteeringOutput runSteeringFlee(GameObject agent, Vector3 target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Get the direction to the target
+        output.Linear = agent.transform.position - target;
 
         // Normalize and scale wrt max acceleration
         output.Linear.Normalize();
@@ -181,6 +214,68 @@ public class SteeringBehaviors
         }
 
         Debug.DrawLine(agent.transform.position, output.Linear, Color.red);
+
+        return output;
+    }
+
+    public static SteeringOutput runSteeringPursue(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        Vector3 direction = target.transform.position - agent.transform.position;
+        float distance = direction.magnitude;
+
+        // Work out speed
+        float speed = agent.GetComponent<Rigidbody>().linearVelocity.magnitude;
+
+        float prediction;
+
+        // Check if speed allows for a reasonable prediction
+        if(speed <= distance / agent.GetComponent<AgentController>().maxPrediction)
+        {
+            prediction = agent.GetComponent<AgentController>().maxPrediction;
+        }
+        else
+        {
+            prediction = distance / speed;
+        }
+
+        // Prep target for Seek
+        output.Linear = target.transform.position + (target.GetComponent<Rigidbody>().linearVelocity * prediction);
+
+        // Delegate to Seek
+        output = runSteeringSeek(agent, output.Linear);
+
+        return output;
+    }
+
+    public static SteeringOutput runSteeringEvade(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        Vector3 direction = target.transform.position - agent.transform.position;
+        float distance = direction.magnitude;
+
+        // Work out speed
+        float speed = agent.GetComponent<Rigidbody>().linearVelocity.magnitude;
+
+        float prediction;
+
+        // Check if speed allows for a reasonable prediction
+        if(speed <= distance / agent.GetComponent<AgentController>().maxPrediction)
+        {
+            prediction = agent.GetComponent<AgentController>().maxPrediction;
+        }
+        else
+        {
+            prediction = distance / speed;
+        }
+
+        // Prep target for Seek
+        output.Linear = target.transform.position + (target.GetComponent<Rigidbody>().linearVelocity * prediction);
+
+        // Delegate to Seek
+        output = runSteeringFlee(agent, output.Linear);
 
         return output;
     }

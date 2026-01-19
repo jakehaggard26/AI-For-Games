@@ -16,6 +16,8 @@ public class AgentController : MonoBehaviour
 
     public float wanderSpeedBuff = 10f;
 
+    public float maxPrediction = 1.5f;
+
     private float orientation;
 
     public GameObject target;
