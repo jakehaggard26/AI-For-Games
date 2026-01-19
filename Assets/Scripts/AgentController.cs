@@ -3,7 +3,11 @@ using UnityEngine;
 public class AgentController : MonoBehaviour
 {
     public float speed = 5f;
+    public float maxSpeed = 7.5f;
     public float rotationSpeed = 200f;
+
+    public float radiusOfSatisfaction = 2f;
+    public float timeToTarget = 0.25f;
 
     private float orientation;
 
@@ -43,7 +47,7 @@ public class AgentController : MonoBehaviour
         }
         else if(isArrival)
         {
-            return;
+            steering = KinematicMovement.runKinematicArrival(this.gameObject, target);
         }
         else if(isWander)
         {

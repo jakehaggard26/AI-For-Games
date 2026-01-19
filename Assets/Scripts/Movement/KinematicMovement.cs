@@ -42,6 +42,40 @@ public class KinematicMovement
 
         return output;
     }
+
+    public static SteeringOutput runKinematicArrival(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Calculate direction to target
+        output.Linear = target.transform.position - agent.transform.position;
+
+        // Check if within the radius of satisfaction
+        if(output.Linear.magnitude < agent.GetComponent<AgentController>().radiusOfSatisfaction)
+        {
+            output.Linear = Vector3.zero;
+            output.Angular = Vector3.zero;
+            return output;
+        }
+
+        // Calculate time to target
+        output.Linear /= agent.GetComponent<AgentController>().timeToTarget;
+
+        // Check if speed is too fast
+        if(output.Linear.magnitude > agent.GetComponent<AgentController>().maxSpeed)
+        {
+            output.Linear.Normalize();
+            output.Linear *= agent.GetComponent<AgentController>().maxSpeed;
+        }
+
+        // Update orientation
+        output.Angular = generateAngularVelocity(agent, agent.transform.position + output.Linear, agent.GetComponent<Rigidbody>(), agent.GetComponent<AgentController>().rotationSpeed);
+
+        // Draw line in desired direction for debugging
+        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+
+        return output;
+    }
     #endregion
 
     public static float newOrientation(float current, Vector3 velocity)
