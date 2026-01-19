@@ -364,4 +364,26 @@ public class SteeringBehaviors
 
         return output;
     }
+
+    public static SteeringOutput runSteeringLookWhereYouAreGoing(GameObject agent)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Check for a zero direction, if so no change
+        if(agent.GetComponent<Rigidbody>().linearVelocity.magnitude == 0)
+        {
+            return output;
+        }
+
+        float orientation = Mathf.Atan2(-agent.GetComponent<Rigidbody>().linearVelocity.x, agent.GetComponent<Rigidbody>().linearVelocity.z) * Mathf.Rad2Deg;
+
+        agent.GetComponent<AgentController>().tempTarget.transform.rotation = Quaternion.Euler(0, agent.transform.rotation.y - orientation, 0);
+
+        output = runSteeringAlign(agent, agent.GetComponent<AgentController>().tempTarget);
+
+        // Used for testing / debugging
+        // output.Linear = runSteeringSeek(agent, new Vector3(10f, 0f, -31f)).Linear;
+
+        return output;
+    }
 }

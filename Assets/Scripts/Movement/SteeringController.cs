@@ -14,6 +14,7 @@ public class SteeringController : MonoBehaviour
     public bool isPursue = false;
     public bool isEvade = false;
     public bool isFace = false;
+    public bool isLookWhereYouAreGoing = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,6 +63,10 @@ public class SteeringController : MonoBehaviour
         else if(isFace)
         {
             steering = SteeringBehaviors.runSteeringFace(agent.gameObject, agent.target);
+        }
+        else if(isLookWhereYouAreGoing)
+        {
+            steering = SteeringBehaviors.runSteeringLookWhereYouAreGoing(agent.gameObject);
         }
         else if(isWander)
         {
