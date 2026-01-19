@@ -19,16 +19,28 @@ public class SetVelocity : MonoBehaviour
         {
             linearVelocity = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
         }
-        else if(useRandomAngularVelocity)
+        else
+        {
+            linearVelocity = Vector3.zero;
+        }
+        
+        if(useRandomAngularVelocity)
         {
             angularVelocity = new Vector3(0f, Random.Range(-5f, 5f), 0f);
+        }
+        else
+        {
+            angularVelocity = Vector3.zero;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.linearVelocity = linearVelocity;
-        rb.angularVelocity = angularVelocity;
+        if(useRandomAngularVelocity || useRandomLinearVelocity)
+        {
+            rb.linearVelocity = linearVelocity;
+            rb.angularVelocity = angularVelocity;
+        }
     }
 }

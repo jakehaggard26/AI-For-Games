@@ -23,11 +23,13 @@ public class AgentController : MonoBehaviour
     public GameObject target;
     public SteeringOutput steering;
     public Rigidbody rb;
+    public GameObject tempTarget;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();   
+        tempTarget = new GameObject();
     }
 
     // Update is called once per frame

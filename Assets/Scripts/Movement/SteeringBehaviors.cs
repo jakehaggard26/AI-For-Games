@@ -331,4 +331,37 @@ public class SteeringBehaviors
 
         return output;
     }
+
+    // Not impelemented well :(
+    public static SteeringOutput runSteeringFace(GameObject agent, GameObject target)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        // Get direction to the target
+        Vector3 direction = target.transform.position - agent.transform.position;
+
+        // Check for a zero direction, if so no change
+        if(direction.magnitude == 0)
+        {
+            return output;
+        }
+
+        agent.GetComponent<AgentController>().tempTarget.transform.position = target.transform.position;
+        agent.GetComponent<AgentController>().tempTarget.transform.rotation = target.transform.rotation; // * Quaternion.AngleAxis(180f, Vector3.up);
+        float orientation = Mathf.Atan2(-direction.x, direction.z) * Mathf.Rad2Deg;
+
+        // Set tempTarget's orientation to be the value stored in orientation
+        agent.GetComponent<AgentController>().tempTarget.transform.eulerAngles += new Vector3(0, orientation, 0);
+
+        Debug.DrawLine(
+                agent.GetComponent<AgentController>().tempTarget.transform.position,
+                agent.GetComponent<AgentController>().tempTarget.transform.position + (agent.GetComponent<AgentController>().tempTarget.transform.forward * 5f),
+                Color.yellow
+        );
+        // Delegate to Align
+        // runSteeringAlign(agent, new Vector3(0f, Mathf.Atan2(-direction.x, direction.z), 0f));
+        output = runSteeringAlign(agent, agent.GetComponent<AgentController>().tempTarget);
+
+        return output;
+    }
 }
