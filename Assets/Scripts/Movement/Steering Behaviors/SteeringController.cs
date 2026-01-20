@@ -46,7 +46,8 @@ public class SteeringController : MonoBehaviour
         }
         else if(isArrival)
         {
-            steering = SteeringBehaviors.runSteeringArrival(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringArrival(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
         }
         else if(isAlign)
         {
