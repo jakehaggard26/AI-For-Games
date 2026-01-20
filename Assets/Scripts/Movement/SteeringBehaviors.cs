@@ -1,5 +1,3 @@
-using System.ComponentModel.Design;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SteeringBehaviors
@@ -386,4 +384,14 @@ public class SteeringBehaviors
 
         return output;
     }
+
+    public static SteeringOutput runSteeringWander(GameObject agent)
+    {
+        SteeringOutput output = new SteeringOutput();
+
+        
+
+        return output;
+    }
+
 }

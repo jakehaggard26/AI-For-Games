@@ -70,9 +70,7 @@ public class SteeringController : MonoBehaviour
         }
         else if(isWander)
         {
-            steering.Linear = Vector3.zero;
-            steering.Angular = Vector3.zero;
-            return;
+            steering = SteeringBehaviors.runSteeringWander(agent.gameObject);
         }
         else
         {
