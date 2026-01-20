@@ -15,6 +15,7 @@ public class SteeringController : MonoBehaviour
     public bool isEvade = false;
     public bool isFace = false;
     public bool isLookWhereYouAreGoing = false;
+    public SteeringBehavior steeringBehavior;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +36,8 @@ public class SteeringController : MonoBehaviour
         // Store outputs based on selected algorithm
         if(isSeek)
         {
-            steering = SteeringBehaviors.runSteeringSeek(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringSeek(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
         }
         else if(isFlee)
         {
@@ -76,7 +78,8 @@ public class SteeringController : MonoBehaviour
         else
         {
             Debug.Log("No movement algorithm selected.");
-            steering = SteeringBehavior.getSteering();
+            steeringBehavior = new SteeringBehavior();
+            steering = steeringBehavior.getSteering();
         }
 
         // Update Linear Velocity
