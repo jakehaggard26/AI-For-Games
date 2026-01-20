@@ -21,9 +21,11 @@ public class SteeringSeek: SteeringBehavior
         
     }
 
-    public override SteeringOutput getSteering(Kinematic agent, Kinematic target)
+    public override SteeringOutput getSteering()
     {
         SteeringOutput output = new SteeringOutput();
+
+        Debug.Log("Running " + nameof(getSteering) + " in Class: " + nameof(SteeringSeek));
 
         // Get the direction to the target
         output.Linear = target.position - agent.position;

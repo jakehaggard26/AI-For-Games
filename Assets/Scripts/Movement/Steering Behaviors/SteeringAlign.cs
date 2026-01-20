@@ -29,7 +29,7 @@ public class SteeringAlign : SteeringBehavior
     /// <param name="agent">A Kinematic object storing the agent's data.</param>
     /// <param name="target">A Kinematic object storing the target's data.</param>
     /// <returns></returns>
-    public override SteeringOutput getSteering(Kinematic agent, Kinematic target)
+    public override SteeringOutput getSteering()
     {
         SteeringOutput output = new SteeringOutput();
 

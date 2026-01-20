@@ -19,7 +19,7 @@ public class SteeringArrival : SteeringBehavior
     {
         
     }
-    public override SteeringOutput getSteering(Kinematic agent, Kinematic target)
+    public override SteeringOutput getSteering()
     {
         SteeringOutput output = new SteeringOutput();
 

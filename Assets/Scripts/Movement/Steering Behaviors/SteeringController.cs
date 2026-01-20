@@ -37,22 +37,22 @@ public class SteeringController : MonoBehaviour
         if(isSeek)
         {
             steeringBehavior = new SteeringSeek(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
-            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isFlee)
         {
             steeringBehavior = new SteeringFlee(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
-            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isArrival)
         {
             steeringBehavior = new SteeringArrival(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
-            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isAlign)
         {
             steeringBehavior = new SteeringAlign(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
-            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isVelocityMatching)
         {
