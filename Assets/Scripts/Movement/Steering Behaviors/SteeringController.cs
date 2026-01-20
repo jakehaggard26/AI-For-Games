@@ -41,7 +41,8 @@ public class SteeringController : MonoBehaviour
         }
         else if(isFlee)
         {
-            steering = SteeringBehaviors.runSteeringFlee(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringFlee(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
         }
         else if(isArrival)
         {
