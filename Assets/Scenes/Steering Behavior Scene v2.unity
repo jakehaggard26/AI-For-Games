@@ -443,6 +443,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &803169225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803169217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4e8ad24d0562e4e8f94e0f89a0073e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kinematic
+  position: {x: 0, y: 0, z: 0}
+  orientation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: -19.8
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -627,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31
+      value: -24.24
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -670,6 +687,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 803169224}
+    - targetCorrespondingSourceObject: {fileID: 4405117404410770935, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 803169225}
   m_SourcePrefab: {fileID: 100100000, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
 --- !u!1 &1373959758
 GameObject:
@@ -799,6 +819,7 @@ GameObject:
   - component: {fileID: 1646413681}
   - component: {fileID: 1646413683}
   - component: {fileID: 1646413684}
+  - component: {fileID: 1646413685}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -895,7 +916,7 @@ Transform:
   m_GameObject: {fileID: 1646413676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.0052359584, z: 0, w: 0.9999863}
-  m_LocalPosition: {x: -14.13, y: 0.99999994, z: -20.15}
+  m_LocalPosition: {x: -9.2, y: 0.99999994, z: -25.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -924,14 +945,15 @@ MonoBehaviour:
   wanderRadius: 5
   wanderOrientation: 10
   wanderRate: 0.5
-  radiusOfSatisfaction: 2
-  slowRadius: 10
+  radiusOfSatisfaction: 1
+  slowRadius: 3
   timeToTarget: 0.2
   wanderSpeedBuff: 10
   maxPrediction: 1.5
   target: {fileID: 803169217}
   rb: {fileID: 0}
   tempTarget: {fileID: 0}
+  kinematic: {fileID: 0}
 --- !u!54 &1646413682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -976,13 +998,30 @@ MonoBehaviour:
   isFlee: 0
   isArrival: 0
   isWander: 0
-  isAlign: 0
+  isAlign: 1
   isVelocityMatching: 0
   isPursue: 0
   isEvade: 0
   isFace: 0
   isLookWhereYouAreGoing: 0
 --- !u!114 &1646413684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646413676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4e8ad24d0562e4e8f94e0f89a0073e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kinematic
+  position: {x: 0, y: 0, z: 0}
+  orientation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
+--- !u!114 &1646413685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -51,7 +51,8 @@ public class SteeringController : MonoBehaviour
         }
         else if(isAlign)
         {
-            steering = SteeringBehaviors.runSteeringAlign(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringAlign(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
         }
         else if(isVelocityMatching)
         {

@@ -25,6 +25,8 @@ public class SteeringFlee: SteeringBehavior
     {
         SteeringOutput output = new SteeringOutput();
 
+        Debug.Log("Running " + nameof(getSteering) + " in Class: " + nameof(SteeringFlee));
+
         // Get the direction to the target
         output.Linear = agent.position - target.position;
 

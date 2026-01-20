@@ -23,6 +23,8 @@ public class SteeringArrival : SteeringBehavior
     {
         SteeringOutput output = new SteeringOutput();
 
+        Debug.Log("Running " + nameof(getSteering) + " in Class: " + nameof(SteeringArrival));
+
         float targetSpeed = 0f;
 
         // Get the direction to the target
