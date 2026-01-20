@@ -15,6 +15,7 @@ public class SteeringController : MonoBehaviour
     public bool isEvade = false;
     public bool isFace = false;
     public bool isLookWhereYouAreGoing = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -75,8 +76,7 @@ public class SteeringController : MonoBehaviour
         else
         {
             Debug.Log("No movement algorithm selected.");
-            steering.Linear = Vector3.zero;
-            steering.Angular = Vector3.zero;
+            steering = SteeringBehavior.getSteering();
         }
 
         // Update Linear Velocity

@@ -412,10 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e99c42529400d42912bc7d53fb520b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetVelocity
-  linearVelocity: {x: 0.5, y: 0, z: 1.5}
+  linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: {x: 0, y: 0, z: 0}
   useRandomLinearVelocity: 0
-  useRandomAngularVelocity: 1
+  useRandomAngularVelocity: 0
 --- !u!54 &803169224
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
@@ -619,7 +619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.32
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.y
@@ -627,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.32
+      value: -31
       objectReference: {fileID: 0}
     - target: {fileID: 7087034559137498235, guid: 981fa8ad983ee8e4999370540bb11b64, type: 3}
       propertyPath: m_LocalRotation.w
@@ -798,6 +798,7 @@ GameObject:
   - component: {fileID: 1646413682}
   - component: {fileID: 1646413681}
   - component: {fileID: 1646413683}
+  - component: {fileID: 1646413684}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -893,14 +894,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646413676}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.82898873, z: 0, w: 0.5592654}
-  m_LocalPosition: {x: 5.28, y: 0.99999994, z: -4.39}
+  m_LocalRotation: {x: 0, y: -0.0052359584, z: 0, w: 0.9999863}
+  m_LocalPosition: {x: -14.13, y: 0.99999994, z: -20.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1373959759}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -111.99, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.6, z: 0}
 --- !u!114 &1646413681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,17 +916,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AgentController
   speed: 5
   maxSpeed: 7.5
-  maxAcceleration: 15
+  maxAcceleration: 5
   maxAngularAcceleration: 15
   rotationSpeed: 200
   maxRotation: 60
-  radiusOfSatisfaction: 3
+  wanderOffset: 2
+  wanderRadius: 5
+  wanderOrientation: 10
+  wanderRate: 0.5
+  radiusOfSatisfaction: 2
   slowRadius: 10
   timeToTarget: 0.2
   wanderSpeedBuff: 10
   maxPrediction: 1.5
   target: {fileID: 803169217}
   rb: {fileID: 0}
+  tempTarget: {fileID: 0}
 --- !u!54 &1646413682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -973,7 +979,26 @@ MonoBehaviour:
   isAlign: 0
   isVelocityMatching: 0
   isPursue: 0
-  isEvade: 1
+  isEvade: 0
+  isFace: 0
+  isLookWhereYouAreGoing: 0
+--- !u!114 &1646413684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646413676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4e8ad24d0562e4e8f94e0f89a0073e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kinematic
+  position: {x: 0, y: 0, z: 0}
+  orientation: 0
+  velocity: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
