@@ -9,6 +9,16 @@ public class SetVelocity : MonoBehaviour
 
     public bool useRandomLinearVelocity;
     public bool useRandomAngularVelocity;
+
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+
+    [SerializeField] private float minZ;
+    [SerializeField] private float maxZ;
+
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +27,7 @@ public class SetVelocity : MonoBehaviour
 
         if(useRandomLinearVelocity)
         {
-            linearVelocity = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
+            linearVelocity = new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minZ, maxZ));
         }
         else
         {
@@ -26,7 +36,7 @@ public class SetVelocity : MonoBehaviour
         
         if(useRandomAngularVelocity)
         {
-            angularVelocity = new Vector3(0f, Random.Range(-5f, 5f), 0f);
+            angularVelocity = new Vector3(0f, Random.Range(minY, maxY), 0f);
         }
         else
         {
