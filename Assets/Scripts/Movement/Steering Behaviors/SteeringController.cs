@@ -61,11 +61,13 @@ public class SteeringController : MonoBehaviour
         }
         else if(isPursue)
         {
-            steering = SteeringBehaviors.runSteeringPursue(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringPursue(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isEvade)
         {
-            steering = SteeringBehaviors.runSteeringEvade(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringEvade(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isFace)
         {
