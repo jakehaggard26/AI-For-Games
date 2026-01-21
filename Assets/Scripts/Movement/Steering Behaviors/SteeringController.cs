@@ -56,7 +56,8 @@ public class SteeringController : MonoBehaviour
         }
         else if(isVelocityMatching)
         {
-            steering = SteeringBehaviors.runSteeringVelocityMatching(agent.gameObject, agent.target);
+            steeringBehavior = new SteeringVelocityMatching(agent.GetComponent<Kinematic>(), agent.target.GetComponent<Kinematic>());
+            steering = steeringBehavior.getSteering();
         }
         else if(isPursue)
         {
@@ -92,10 +93,10 @@ public class SteeringController : MonoBehaviour
         agent.rb.angularVelocity = steering.Angular * Time.fixedDeltaTime;
         
         // Limit speed
-        if(steering.Linear.magnitude > agent.maxSpeed)
+        if(agent.rb.linearVelocity.magnitude > agent.maxSpeed)
         {
-            steering.Linear.Normalize();
-            steering.Linear *= agent.maxSpeed;
+            agent.rb.linearVelocity.Normalize();
+            agent.rb.linearVelocity *= agent.maxSpeed;
         }
     }
 }

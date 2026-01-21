@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class SteeringAlign : SteeringBehavior
 {
-    public Kinematic agent;
-    public Kinematic target;
-
     public SteeringAlign() : base()
     {
         this.agent = null;

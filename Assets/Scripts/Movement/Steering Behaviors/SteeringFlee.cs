@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class SteeringFlee: SteeringBehavior
 {
-    public Kinematic agent;
-    public Kinematic target;
-
     public SteeringFlee() : base()
     {
         
@@ -28,14 +25,14 @@ public class SteeringFlee: SteeringBehavior
         Debug.Log("Running " + nameof(getSteering) + " in Class: " + nameof(SteeringFlee));
 
         // Get the direction to the target
-        output.Linear = agent.position - target.position;
+        output.Linear = this.agent.position - this.target.position;
 
         // Normalize and scale wrt max acceleration
         output.Linear.Normalize();
-        output.Linear *= agent.GetComponent<AgentController>().maxAcceleration;
+        output.Linear *= this.agent.GetComponent<AgentController>().maxAcceleration;
 
         // Draw line in desired direction for debugging
-        Debug.DrawLine(agent.transform.position, agent.transform.position + output.Linear, Color.red);
+        Debug.DrawLine(this.agent.position, this.agent.position + output.Linear, Color.red);
 
         return output;
     }

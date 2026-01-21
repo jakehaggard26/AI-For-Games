@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class SteeringArrival : SteeringBehavior
 {
-    public Kinematic agent;
-    public Kinematic target;
-
     public SteeringArrival() : base()
     {
         
